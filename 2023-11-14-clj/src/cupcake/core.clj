@@ -8,16 +8,6 @@
 (defn cookie []
   {:desc "🍪" :toppings []})
 
-(defn- toppings-desc [toppings]
-  {:pre [(vector? toppings) (every? #(some? (:desc %)) toppings)]}
-  (str/join " and " (map :desc toppings)))
-
-(defn desc [cake]
-  (if (empty? (:toppings cake))
-    (:desc cake)
-    (let [toppings (toppings-desc (:toppings cake))]
-      (str (:desc cake) " with " toppings))))
-
 (defn- add-topping [cake topping]
   {:pre (vector? (:toppings cake))}
   (let [
