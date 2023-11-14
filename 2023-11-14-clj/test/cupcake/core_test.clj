@@ -2,6 +2,11 @@
   (:require [clojure.test :refer :all]
             [cupcake.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest base-cakes
+  (testing "Returns the description for a bare cupcake"
+    (let [c (cupcake)]
+      (is (= (desc c) "🧁"))))
+
+  (testing "Returns the description for a bare cookie"
+    (let [c (cookie)]
+      (is (= (desc c) "🍪")))))
