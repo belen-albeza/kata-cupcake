@@ -23,3 +23,12 @@
   (testing "Returns the description for a cake with sugar"
     (let [c (sugar(cupcake))]
       (is (= (desc c) "🧁 with 🍬")))))
+
+(deftest multiple-toppings-test
+  (testing "Returns the description for a cake with two toppings"
+    (let [c (chocolate(nuts(cupcake)))]
+      (is (= (desc c) "🧁 with 🌰 and 🍫"))))
+
+  (testing "Returns the description for a cake with three toppings"
+    (let [c (nuts (sugar(chocolate(cookie))))]
+      (is (= (desc c) "🍪 with 🍫 and 🍬 and 🌰")))))

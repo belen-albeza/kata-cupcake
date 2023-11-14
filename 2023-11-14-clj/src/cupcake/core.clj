@@ -1,4 +1,5 @@
 (ns cupcake.core
+  (:require [clojure.string :as str])
   (:gen-class))
 
 (defn cupcake []
@@ -9,7 +10,7 @@
 
 (defn- toppings-desc [toppings]
   {:pre [(vector? toppings) (every? #(some? (:desc %)) toppings)]}
-  (:desc (first toppings)))
+  (str/join " and " (map :desc toppings)))
 
 (defn desc [cake]
   (if (empty? (:toppings cake))
